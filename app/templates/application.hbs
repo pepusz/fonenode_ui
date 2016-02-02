@@ -1,3 +1,39 @@
-<h2 id="title">Welcome to Ember</h2>
+<h2 id="title">Fonenode mock API test interface</h2>
 
-{{outlet}}
+<div>
+	Auth id: {{input value=authId}}
+	Auth secret: {{input value=authSecret}}
+</div>
+
+
+<div class="container">
+	<div class="row">
+		<h2>Mock send message</h2>
+		to: {{input value=currentMessage.to}}
+		from: {{input value=currentMessage.from}}
+		text: {{textarea value=currentMessage.text cols="80" rows="6"}}
+<button class="btn btn-success btn-sm" {{action 'sendMockMessage'}}>Send</button>
+	</div>
+	<div class="row">
+		<h2>Inbox <button class="btn btn-primary btn-sm" {{action 'syncInbox'}}>Sync</button></h2>
+		<div>
+			<ul>
+		  {{#each inbox as |message|}}
+		    <li><b>{{message.from}}</b>:{{message.text}}</li>
+		  {{/each}}
+		</ul>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<h2>Outbox <button class="btn btn-primary btn-sm" {{action 'syncOutbox'}}>Sync</button></h2>
+		<div>
+			<ul>
+		  {{#each outbox as |message|}}
+		    <li><b>{{message.to}}</b>:{{message.text}}</li>
+		  {{/each}}
+		</ul>
+		</div>
+	</div>
+</div>	
